@@ -30,6 +30,7 @@ public class LibraryTest {
         library.addBook(book1);
         assertEquals(9, library.capacity());
         assertEquals(1, library.totalOfBooks());
+        System.out.println(library.genreList());
     }
 
     @Test
@@ -38,6 +39,7 @@ public class LibraryTest {
         library.addBook(book2);
         library.addBook(book3);
         assertEquals(3, library.totalOfBooks());
+        System.out.println(library.genreList());
     }
 
     @Test
@@ -54,8 +56,10 @@ public class LibraryTest {
         library.addBook(book1);
         library.addBook(book2);
         assertEquals(2, library.totalOfBooks());
+        System.out.println(library.genreList());
         library.removeBook(book2);
         assertEquals(1, library.totalOfBooks());
+        System.out.println(library.genreList());
     }
 
     @Test
