@@ -29,7 +29,7 @@ public class BorrowerTest {
     public void removeBook() {
         borrower.addBook(book);
         assertEquals(1, borrower.booksInBag());
-        borrower.removeBook();
+        borrower.removeBook(book);
         assertEquals(0, borrower.booksInBag());
     }
 

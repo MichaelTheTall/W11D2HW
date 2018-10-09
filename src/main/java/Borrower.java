@@ -15,7 +15,8 @@ public class Borrower {
         this.bag.add(book);
     }
 
-    public Book removeBook() {
-        return this.bag.remove(0);
+    public Book removeBook(Book book) {
+        int index = this.bag.indexOf(book);
+        return this.bag.remove(index);
     }
 }

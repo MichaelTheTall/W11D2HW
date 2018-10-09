@@ -9,6 +9,7 @@ public class LibraryTest {
     Book book1;
     Book book2;
     Book book3;
+    Borrower borrower;
 
     @Before
     public void before() {
@@ -16,6 +17,7 @@ public class LibraryTest {
         book1 = new Book("The Book", "The Man", "Bookery");
         book2 = new Book("The Book 2: Electric Boogaloo", "Mr. The Man", "Bookery");
         book3 = new Book("The Book 3: Books at Sea", "Sir The Man", "Bookery");
+        borrower = new Borrower();
     }
 
     @Test
@@ -45,5 +47,35 @@ public class LibraryTest {
         assertEquals("", templib.checkSpace(book2));
         assertEquals(2, templib.totalOfBooks());
         assertEquals("The Library is Full!", templib.checkSpace(book3));
+    }
+
+    @Test
+    public void removeBook() {
+        library.addBook(book1);
+        library.addBook(book2);
+        assertEquals(2, library.totalOfBooks());
+        library.removeBook(book2);
+        assertEquals(1, library.totalOfBooks());
+    }
+
+    @Test
+    public void signOut() {
+        library.addBook(book1);
+        library.addBook(book2);
+        library.addBook(book3);
+        assertEquals(3, library.totalOfBooks());
+        library.signOut(book1, borrower);
+        assertEquals(2, library.totalOfBooks());
+        assertEquals(1, borrower.booksInBag());
+    }
+
+    @Test
+    public void returns() {
+        borrower.addBook(book1);
+        assertEquals(1, borrower.booksInBag());
+        assertEquals(0, library.totalOfBooks());
+        library.returns(book1, borrower);
+        assertEquals(0, borrower.booksInBag());
+        assertEquals(1, library.totalOfBooks());
     }
 }

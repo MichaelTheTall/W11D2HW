@@ -25,6 +25,10 @@ public class Library {
         stock.add(book);
     }
 
+    public void removeBook(Book book) {
+        stock.remove(book);
+    }
+
     public String full() {
         return "The Library is Full!";
     }
@@ -36,5 +40,15 @@ public class Library {
         } else {
             return full();
         }
+    }
+
+    public void signOut(Book book, Borrower borrower) {
+        removeBook(book);
+        borrower.addBook(book);
+    }
+
+    public void returns(Book book, Borrower borrower) {
+        borrower.removeBook(book);
+        addBook(book);
     }
 }
