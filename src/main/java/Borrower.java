@@ -10,4 +10,12 @@ public class Borrower {
     public int booksInBag() {
         return this.bag.size();
     }
+
+    public void addBook(Book book) {
+        this.bag.add(book);
+    }
+
+    public Book removeBook() {
+        return this.bag.remove(0);
+    }
 }
